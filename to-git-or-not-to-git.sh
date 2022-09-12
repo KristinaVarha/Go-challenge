@@ -1,1 +1,1 @@
-curl -s https://01.kood.tech/api/graphql-engine/v1/graphql --data '{"query":"{user(where:{login:{_eq:\"kvarha\"}}){id}}"}'
+curl -s https://01.kood.tech/api/graphql-engine/v1/graphql --data '{"query":"{user(where:{login:{_eq:\"kvarha\"}}){id}}"}' | cut -c 24-27
