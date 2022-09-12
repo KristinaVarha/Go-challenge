@@ -1,1 +1,1 @@
-find -iname '*.sh' | cut -d '.' -f 2
+find . -name '*.sh' -printf "%f\n" | sed 's/\.[^.]*$//' 
