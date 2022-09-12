@@ -1,1 +1,1 @@
-ls -l | awk '{ print; getline;}'
+ls | awk 'FNR%2'
