@@ -1,1 +1,1 @@
-ls -A -m -ltu -p
+ls -A -m -c -p | tr -d '[:blank:]'
