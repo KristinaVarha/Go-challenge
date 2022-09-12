@@ -1,3 +1,3 @@
-$ bash hello.sh                                       
+bash hello.sh                                       
 Hello kvarha!
-$
+
