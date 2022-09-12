@@ -1,1 +1,1 @@
-ls -l | sed 1,1d
+ls -l | awk '{ print; getline;}'
