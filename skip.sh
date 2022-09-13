@@ -1,1 +1,1 @@
-ls -l | sed '3d;5d;7d;9d' 
+ls -l | sed -n 'n;p'
