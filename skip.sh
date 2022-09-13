@@ -1,1 +1,1 @@
-ls -l | awk 'FNR%2'
+ls -l | sed '3d;5d;7d;9d' 
