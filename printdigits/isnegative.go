@@ -1,5 +1,4 @@
 func IsNegative(nb int) {
-	int = 0
 	if nb < 0 {
 		z01.PrintRune('T')
 		z01.PrintRune('\n')
