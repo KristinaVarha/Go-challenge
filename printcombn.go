@@ -1,4 +1,4 @@
-ackage piscine
+package piscine
 
 import "github.com/01-edu/z01"
 
@@ -33,7 +33,7 @@ func itoa(num int) string {
 		return "0"
 	}
 	for num > 0 {
-		result = IntToString(num % 10) + result
+		result = IntToString(num%10) + result
 		num /= 10
 	}
 	return result
@@ -52,7 +52,7 @@ func printComb(n int, prev int, result string, count *int) {
 				if *count > 0 {
 					printString(", ")
 				}
-				printString(result+itoa(i))
+				printString(result + itoa(i))
 				*count++
 			} else {
 				printComb(n-1, i, result+itoa(i), count)
