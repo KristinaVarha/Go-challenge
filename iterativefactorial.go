@@ -16,5 +16,3 @@ func IterativeFactorial(nb int) int {
 	}
 	return 0
 }
-
-//hi
