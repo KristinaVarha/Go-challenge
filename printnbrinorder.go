@@ -14,6 +14,7 @@ func sorting(arr []int) []int {
 	}
 	return arr
 }
+
 func intToDigits(n int) (digits []int) {
 	for n > 0 {
 		if n == 0 {
@@ -25,6 +26,7 @@ func intToDigits(n int) (digits []int) {
 	}
 	return
 }
+
 func PrintNbrInOrder(n int) {
 	if n == 0 {
 		z01.PrintRune('0')
