@@ -35,7 +35,7 @@ func main() {
 		c++
 	}
 	if c >= 2 && arg[1] == "--upper" {
-		pos = 2
+		pos = 1
 		flagupper = true
 	}
 	for index, k := range arg {
