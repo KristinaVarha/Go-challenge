@@ -6,36 +6,46 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func main() {
-	my_arr := os.Args[1:]
-	ln := 0
-	for i := range my_arr {
-		ln = i
-	}
-	if ln >= 1 {
-		if my_arr[0] == "--upper" {
-			for i := 1; i <= ln; i++ {
-				num := 0
-				for _, w := range my_arr[i] {
-					num = num*10 + int(w-'0')
-				}
-				if num >= 1 && num <= 26 {
-					z01.PrintRune('A' + rune(num-1))
-				}
-			}
+func tonumber(str string) int {
+	check := []rune(str)
+	ans := 0
+	i := 0
+	for _, s := range check {
+		if s >= 48 && s <= 57 {
+			ans = ans*10 + (int(s) - 48)
 		} else {
-			for i := 0; i <= ln; i++ {
-				myNum := 0
-				for _, w := range my_arr[i] {
-					myNum = myNum*10 + int(w-'0')
-				}
-				if myNum >= 1 && myNum <= 26 {
-					z01.PrintRune('a' + rune(myNum-1))
-				} else {
-					z01.PrintRune(' ')
-				}
-			}
+			return 32
+		}
+		i++
+		if i == 3 {
+			return 32
 		}
 	}
-	z01.PrintRune('\n')
+
+	if ans >= 1 && ans <= 26 {
+		return ans + 96
+	} else {
+		return 32
+	}
+}
+
+func main() {
+	len := 0
+	for range os.Args {
+		len++
+	}
+	if len > 0 {
+		a := 0
+		l := 1
+		if len > 1 && os.Args[1] == "--upper" {
+			z01.PrintRune(32)
+			a = -32
+			l = 2
+		}
+		for i := l; i < len; i++ {
+			num := tonumber(os.Args[i])
+			z01.PrintRune(rune(num + a))
+		}
+	}
+	z01.PrintRune(10)
 }
