@@ -38,7 +38,6 @@ func main() {
 		a := 0
 		l := 1
 		if len > 1 && os.Args[1] == "--upper" {
-			z01.PrintRune(32)
 			a = -32
 			l = 2
 		}
