@@ -14,6 +14,7 @@ func main() {
 	}
 	if ln >= 1 {
 		if my_arr[0] == "--upper" {
+			z01.PrintRune(' ')
 			for i := 1; i <= ln; i++ {
 				num := 0
 				for _, w := range my_arr[i] {
@@ -22,7 +23,7 @@ func main() {
 				if num >= 1 && num <= 26 {
 					z01.PrintRune('A' + rune(num-1))
 				} else {
-					z01.PrintRune(' ')
+
 				}
 			}
 		} else {
