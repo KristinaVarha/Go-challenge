@@ -2,11 +2,10 @@ package piscine
 
 import "github.com/01-edu/z01"
 
-var ans [8]rune
-var ban [9]bool
-var ans2 [9]int
-
 func EightQueens() {
+	var ans [8]rune
+	var ban [9]bool
+	var ans2 [9]int
 	ok := true
 	cnt := 0
 	for i := 1; i <= 8; i++ {
