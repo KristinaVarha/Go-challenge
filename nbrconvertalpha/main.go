@@ -42,7 +42,6 @@ func main() {
 		if index >= pos {
 			num := BasicAtoi(k)
 			if num == -1 {
-				z01.PrintRune(' ')
 			} else {
 				if !flagupper {
 					z01.PrintRune(rune('a' + num - 1))
