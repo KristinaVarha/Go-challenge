@@ -1,7 +1,10 @@
 package piscine
 
-import "strings"
+import (
+	"strings"
+)
 
 func ToUpper(s string) string {
-	return strings.ToUpper(s)
+	s = strings.ToUpper(s)
+	return s
 }
