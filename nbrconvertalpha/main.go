@@ -23,7 +23,6 @@ func main() {
 				if num >= 1 && num <= 26 {
 					z01.PrintRune('A' + rune(num-1))
 				} else {
-
 				}
 			}
 		} else {
