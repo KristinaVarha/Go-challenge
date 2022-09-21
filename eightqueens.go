@@ -12,14 +12,16 @@ func goodDirection(x, y, vx, vy int) bool {
 		if board[x][y] {
 			return false
 		}
-		x = x + vx // Move x in the right direction
-		y = y + vy // Move y in the right direction
+		x = x + vx
+		y = y + vy
 	}
 	return true
 }
+
 func goodSquare(x, y int) bool {
 	return goodDirection(x, y, +0, -1) && goodDirection(x, y, +1, -1) && goodDirection(x, y, +1, +0) && goodDirection(x, y, +1, +1) && goodDirection(x, y, +0, +1) && goodDirection(x, y, -1, +1) && goodDirection(x, y, -1, +0) && goodDirection(x, y, -1, -1)
 }
+
 func printQueens() {
 	x := 0
 	for x < size {
@@ -34,6 +36,7 @@ func printQueens() {
 	}
 	z01.PrintRune('\n')
 }
+
 func tryX(x int) {
 	y := 0
 	for y < size {
@@ -49,6 +52,7 @@ func tryX(x int) {
 		y++
 	}
 }
+
 func EightQueens() {
 	tryX(0)
 }
