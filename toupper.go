@@ -1,10 +1,11 @@
 package piscine
 
-import (
-	"strings"
-)
-
 func ToUpper(s string) string {
-	s = strings.ToUpper(s)
-	return s
+	runeArray := []rune(s)
+	for i := range runeArray {
+		if runeArray[i] >= 'a' && runeArray[i] <= 'z' {
+			runeArray[i] = runeArray[i] - 32
+		}
+	}
+	return string(runeArray)
 }
