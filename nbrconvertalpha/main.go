@@ -37,14 +37,10 @@ func main() {
 	if len > 0 {
 		a := 0
 		l := 1
-		if len > 1 && os.Args[1] == "--upper" {
-			a = -32
-			l = 2
-		}
-		for i := l; i < len; i++ {
-			num := tonumber(os.Args[i])
-			z01.PrintRune(rune(num + a))
-		}
+	}
+	for i := l; i < len; i++ {
+		num := tonumber(os.Args[i])
+		z01.PrintRune(rune(num + a))
 	}
 	z01.PrintRune(10)
 }
