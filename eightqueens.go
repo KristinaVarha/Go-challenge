@@ -18,14 +18,7 @@ func goodDirection(x, y, vx, vy int) bool {
 	return true
 }
 func goodSquare(x, y int) bool {
-	return goodDirection(x, y, +0, -1) &&
-		goodDirection(x, y, +1, -1) &&
-		goodDirection(x, y, +1, +0) &&
-		goodDirection(x, y, +1, +1) &&
-		goodDirection(x, y, +0, +1) &&
-		goodDirection(x, y, -1, +1) &&
-		goodDirection(x, y, -1, +0) &&
-		goodDirection(x, y, -1, -1)
+	return goodDirection(x, y, +0, -1) && goodDirection(x, y, +1, -1) && goodDirection(x, y, +1, +0) && goodDirection(x, y, +1, +1) && goodDirection(x, y, +0, +1) && goodDirection(x, y, -1, +1) && goodDirection(x, y, -1, +0) && goodDirection(x, y, -1, -1)
 }
 func printQueens() {
 	x := 0
