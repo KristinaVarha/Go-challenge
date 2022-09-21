@@ -1,11 +1,10 @@
 package piscine
 
 func IsNumeric(str string) bool {
-	h := []rune(str)
-	for i := 0; i <= len(h)-1; i++ {
-		if (h[i] >= '0') && (h[i] <= '9') {
-			return true
+	for _, char := range str {
+		if char < '0' || char > '9' {
+			return false
 		}
 	}
-	return false
+	return true
 }
