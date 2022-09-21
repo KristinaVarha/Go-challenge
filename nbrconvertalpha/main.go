@@ -35,13 +35,14 @@ func main() {
 		c++
 	}
 	if c >= 2 && arg[1] == "--upper" {
-		pos = 1
+		pos = 0
 		flagupper = true
 	}
 	for index, k := range arg {
 		if index >= pos {
 			num := BasicAtoi(k)
 			if num == -1 {
+				z01.PrintRune(' ')
 			} else {
 				if !flagupper {
 					z01.PrintRune(rune('a' + num - 1))
