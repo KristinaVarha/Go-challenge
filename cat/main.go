@@ -22,7 +22,6 @@ func main() {
 			for _, v := range errmessage {
 				z01.PrintRune(v)
 			}
-			z01.PrintRune('\n')
 
 		} else {
 			for _, v := range strFile {
