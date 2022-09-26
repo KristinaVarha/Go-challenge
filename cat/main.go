@@ -8,36 +8,30 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func main() {
-	lens := 0
-	argum := os.Args
-	for range argum {
-		lens++
+func printStr(s string) {
+	sRune := []rune(s)
+	for i := 0; i < len(sRune); i++ {
+		z01.PrintRune(sRune[i])
 	}
-	for i := 1; i < lens; i++ {
-		file, err := ioutil.ReadFile(os.Args[i])
-		strFile := string(file)
-		if err != nil {
-			errmessage := "ERROR: " + "open " + os.Args[i] + ": no such file or directory"
-			for _, v := range errmessage {
-				z01.PrintRune(v)
-			}
+}
 
-		} else {
-			for _, v := range strFile {
-				z01.PrintRune(v)
+func main() {
+	arguments := os.Args
+	files := arguments[1:]
+	if len(files) > 0 {
+		for i := 0; i < len(files); i++ {
+			content, err := ioutil.ReadFile(files[i])
+			if err != nil {
+				errFile := "ERROR: open " + string(files[i]) + ": no such file or directory"
+				printStr(errFile)
+				z01.PrintRune('\n')
+				os.Exit(1)
 			}
+			printStr(string(content))
 		}
-	}
-	if lens == 1 {
-		_, err := io.Copy(os.Stdout, os.Stdin)
-		if err != nil {
-			str := err.Error()
-			for _, v := range str {
-				z01.PrintRune(v)
-			}
-			z01.PrintRune(10)
-			return
+	} else {
+		if _, err := io.Copy(os.Stdout, os.Stdin); err != nil {
+			panic(err)
 		}
 	}
 }
