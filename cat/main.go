@@ -18,7 +18,7 @@ func main() {
 		file, err := ioutil.ReadFile(os.Args[i])
 		strFile := string(file)
 		if err != nil {
-			errmessage := "open " + os.Args[i] + ": no such file or directory"
+			errmessage := "ERROR:" + "open " + os.Args[i] + ": no such file or directory"
 			for _, v := range errmessage {
 				z01.PrintRune(v)
 			}
