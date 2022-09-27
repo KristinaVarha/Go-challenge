@@ -3,94 +3,73 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
+func order(s string) {
+	var a [5000]int
+	for _, c := range s {
+		a[int(c)]++
+	}
+	for i, c := range a {
+		for c > 0 {
+			z01.PrintRune(rune(i))
+			c--
+		}
+	}
+	z01.PrintRune('\n')
+}
+
+func insert(str1 string, str2 string) string {
+	return str1 + str2
+}
+
+func help() {
+	fmt.Println("--insert")
+	fmt.Println("  -i")
+	fmt.Println("	 This flag inserts the string into the string passed as argument.")
+	fmt.Println("--order")
+	fmt.Println("  -o")
+	fmt.Println("	 This flag will behave like a boolean, if it is called it will order the argument.")
+}
+
 func main() {
-	isOrder, _ := containsArg(os.Args[1:], "--order", 7, false)
-	isInsert, insertArg := containsArg(os.Args[1:], "--insert", 8, true)
-	isHelp, _ := containsArg(os.Args[1:], "--help", 6, false)
-	if isHelp {
-		fmt.Println("--insert")
-		fmt.Println("  -i")
-		fmt.Println("    This flag inserts the string passed as argument.")
-		fmt.Println("--order")
-		fmt.Println("  -o")
-		fmt.Println("    This flag will behave like a boolean, if it is called it will order the argument.")
-		return
+	myArr := os.Args[1:]
+	ln := -1
+	for i := range myArr {
+		ln = i
 	}
-
-	otherArgs := getArgs(os.Args[1:])
-
-	for _, arg := range otherArgs {
-		var runes []rune
-		if isOrder {
-			runes = sortRuneTable([]rune(arg))
-		} else {
-			runes = []rune(arg)
-		}
-		fmt.Print(string(runes))
-	}
-
-	if isInsert {
-		if isOrder {
-			fmt.Println(string(sortRuneTable([]rune(insertArg))))
-		} else {
-			fmt.Println(insertArg)
-		}
-	}
-}
-
-func sortRuneTable(table []rune) []rune {
-	for i := 1; i < stringLen(table); i++ {
-		key := table[i]
-		j := i - 1
-		for j >= 0 && table[j] > key {
-			table[j+1] = table[j]
-			j = j - 1
-		}
-		table[j+1] = key
-	}
-	return table
-}
-
-func stringLen(s []rune) int {
-	count := 0
-	for range s {
-		count++
-	}
-	return count
-}
-
-func getArgs(args []string) []string {
-	var result []string
-	for _, arg := range args {
-		if !checkForRune(arg, '-') {
-			result = append(result, arg)
-		}
-	}
-	return result
-}
-
-func checkForRune(s string, check rune) bool {
-	for _, r := range s {
-		if r == check {
-			return true
-		}
-	}
-	return false
-}
-
-func containsArg(args []string, argToFind string, argToFindLen int, takeParam bool) (bool, string) {
-	for _, arg := range args {
-		if checkForRune(arg, '-') {
-			if arg[:argToFindLen] == argToFind || arg == argToFind[1:3] {
-				if takeParam {
-					return true, arg[argToFindLen+1:]
+	if ln != -1 {
+		if myArr[0] == "-h" || myArr[0] == "--help" {
+			help()
+		} else if myArr[0] == "--order" || myArr[0] == "-o" {
+			order(myArr[1])
+		} else if myArr[0][0:3] == "--i" || myArr[0][0:2] == "-i" {
+			if ln < 2 {
+				if myArr[0][0:3] == "--i" {
+					fmt.Println(insert(myArr[1], myArr[0][9:]))
 				} else {
-					return true, ""
+					fmt.Println(insert(myArr[1], myArr[0][3:]))
 				}
+			} else {
+				myStr := ""
+				for i := 1; i <= ln; i++ {
+					if myArr[i] != "-o" && myArr[i] != "--order" {
+						myStr = insert(myStr, myArr[i])
+					}
+				}
+				if myArr[0][0:3] == "--i" {
+					myStr = insert(myStr, myArr[0][9:])
+				} else {
+					myStr = insert(myStr, myArr[0][3:])
+				}
+				order(myStr)
 			}
+		} else {
+			fmt.Println(myArr[0])
 		}
+	} else {
+		help()
 	}
-	return false, ""
 }
