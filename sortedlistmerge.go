@@ -3,7 +3,6 @@ package piscine
 func SortedListMerge(l1 *NodeI, l2 *NodeI) *NodeI {
 	l1 = ListSort(l1)
 	l2 = ListSort(l2)
-
 	if l1 == nil {
 		return l2
 	}
