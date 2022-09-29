@@ -1,18 +1,20 @@
 package piscine
 
-func SortedListMerge(n1 *NodeI, n2 *NodeI) *NodeI {
-	n1 = ListSort(n1)
-	n2 = ListSort(n2)
-	if n1 == nil {
-		return n2
+func SortedListMerge(l1 *NodeI, l2 *NodeI) *NodeI {
+	l1 = ListSort(l1)
+	l2 = ListSort(l2)
+
+	if l1 == nil {
+		return l2
 	}
-	if n2 == nil {
-		return n1
+	if l2 == nil {
+		return l1
 	}
-	if n1.Data <= n2.Data {
-		n1.Next = SortedListMerge(n1.Next, n2)
-		return n1
+	if l1.Data <= l2.Data {
+		l1.Next = SortedListMerge(l1.Next, l2)
+		return l1
+	} else {
+		l2.Next = SortedListMerge(l1, l2.Next)
+		return l2
 	}
-	n2.Next = SortedListMerge(n1, n2.Next)
-	return n2
 }
