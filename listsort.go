@@ -23,6 +23,5 @@ func ListSort(l *NodeI) *NodeI {
 			current = current.Next
 		}
 	}
-
 	return l
 }
